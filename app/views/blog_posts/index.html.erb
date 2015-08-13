@@ -1,3 +1,5 @@
+<h2>Welcome <%= current_user.username %>!</h2>
+
 <p id="notice"><%= notice %></p>
 
 <div class="row">
@@ -8,7 +10,7 @@
             <%= link_to blog_post.title, blog_post %>
           </div>
           <div class="panel-body">
-            <p>by <%= blog_post.author %> on <%= blog_post.created_at.strftime('%b %e, %l:%M %p') %></p>
+            <p>by <%= blog_post.user.username %> on <%= blog_post.created_at.strftime('%b %e, %l:%M %p') %></p>
             <p><%= blog_post.blog_entry[0..500] %>...[<%= link_to "READ MORE", blog_post %>]</p>
           </div>
           <div class="panel-footer">
