@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'blog_posts#index'
 
+  get 'user_profile' => 'blog_posts#user_profile'
+  get 'your_posts' => 'blog_posts#your_posts'
+
   devise_for :users
   resources :comments
   resources :blog_posts
