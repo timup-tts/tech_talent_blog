@@ -13,13 +13,13 @@
             <p>by <strong><%= link_to blog_post.user.username, user_profile_path(id: blog_post.user.id) %></strong> on <%= blog_post.created_at.strftime('%b %e, %l:%M %p') %></p>
             <p><%= blog_post.blog_entry[0..500] %>...[<%= link_to "READ MORE", blog_post %>]</p>
           </div>
-          <div class="panel-footer">
-            <%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-warning" %>
-            <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-          </div>
+          <% if current_user.id == blog_post.user.id %>
+            <div class="panel-footer">
+              <%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-warning" %>
+              <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
 </div>
-
-<%= link_to 'New Blog post', new_blog_post_path %>
